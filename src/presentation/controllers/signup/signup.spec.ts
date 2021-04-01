@@ -209,4 +209,25 @@ describe('SignUp Controller', () => {
       password: 'password',
     });
   });
+
+  it('Should return 500 if EmailValidator errors out', () => {
+    const { addAccountStub, sut } = makeSut();
+
+    jest.spyOn(addAccountStub, 'add').mockImplementationOnce(() => {
+      throw new Error();
+    });
+
+    const httpRequest = {
+      body: {
+        name: 'any_name',
+        email: 'invalid email',
+        password: 'password',
+        passwordConfirmation: 'password',
+      },
+    };
+    const httpResponse = sut.handle(httpRequest);
+
+    expect(httpResponse.statusCode).toBe(500);
+    expect(httpResponse.body).toEqual(new ServerError());
+  });
 });
