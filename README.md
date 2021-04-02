@@ -17,7 +17,7 @@ npm start
 ```
 
 ## Contributing
-Pull requests are welcome. If you notice points of possible improvements let me know! 
+Pull requests are welcome. Let me know what I can improve!
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
